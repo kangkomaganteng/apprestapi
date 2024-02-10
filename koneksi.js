@@ -7,8 +7,8 @@ password : '',
 database : 'restapi'
 });
 
-conn.connect((err)=>{
-if(err) throw err;
+conn.connect((error)=>{
+if(error) throw error;
 console.log('MYSQL Terkoneksi');
 });
 
