@@ -16,3 +16,14 @@ exports.tampilsemuadata = function(req, res) {
             }
         });
 };
+// menampilkan data berdasarkan ID
+exports.tampildataid = function(req, res) {
+    let id = req.params.id;
+    connection.query('SELECT * FROM data_siswa where id = ?', [id], function (error, rows) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok(rows, res);
+            }
+        });
+};
