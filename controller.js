@@ -27,3 +27,18 @@ exports.tampildataid = function(req, res) {
             }
         });
 };
+// menambahkan data ke dtabase
+exports.tambahdata = function(req, res) {
+    var nis = req.body.nis;
+    var nama = req.body.nama;
+    var alamat = req.body.alamat;
+    var kelas =req.body.kelas;
+    connection.query('INSERT INTO data_siswa (nis,nama,alamat,kelas) value (?,?,?,?)',
+    [nis,nama,alamat,kelas],function (error, rows) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Data berhasi di tambahkan",res)
+        }
+    });
+}
