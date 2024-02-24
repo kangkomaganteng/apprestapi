@@ -42,3 +42,29 @@ exports.tambahdata = function(req, res) {
         }
     });
 }
+ exports.editdata = function(req, res) {
+    var id = req.body.id;
+    var nis = req.body.nis;
+    var nama = req.body.nama;
+    var alamat = req.body.alamat;
+    var kelas =req.body.kelas; 
+    connection.query('UPDATE data_siswa SET nis=?,nama=?,alamat=?,kelas=? where id=?',[nis,nama,alamat,kelas,id],function (error,rows)
+    {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Data berhasi di Edit",res)
+        }    
+    }); 
+ }
+ exports.hapusdata = function(req, res) {
+    var id= req.body.id;
+    connection.query('DELETE FROM data_siswa WHERE id=?',[id],function(error,rows)
+      {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Data berhasi di Hapus",res)
+        }        
+    });
+ }
